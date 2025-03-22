@@ -1,0 +1,32 @@
+body {
+    margin-bottom: 2rem;
+}
+
+.nl-einnahmen {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+h3 {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.callout {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bs-primary-bg-subtle);
+
+}
+
+.callout-danger {
+    background: var(--bs-danger-bg-subtle) !important;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 20;
+}

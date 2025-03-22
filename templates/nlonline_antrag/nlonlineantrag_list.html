@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block heading %}Anträge{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th> Antragsnummer</th>
+            <th> Antragsdatum</th>
+            <th> Antragsteller</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for antrag in object_list %}
+            <tr>
+                <td><a href="/antrag/{{ antrag.id }}">#{{ antrag.id }}</a></td>
+                <td> {{ antrag.application_date|date }} </td>
+                <td> {{ antrag.first_name }} {{ antrag.last_name }} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

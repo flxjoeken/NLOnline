@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block heading %}
+Antrag #{{ object.id }} – {{ object.application_date|date }}
+{% endblock %}
+
+{% block content %}
+
+    <h2>Antragsteller</h2>
+    <p>
+        {{ object.first_name }}
+        {{ object.last_name }}<br>
+        {{ object.street }}<br>
+        {{ object.zip_code }}
+        {{ object.city }}
+    </p>
+    <p>
+        {{ object.field_of_study }}
+    </p>
+    <h2>Kontakt</h2>
+    <p>
+        {{ object.phone }}<br>
+        <a href="mailto:{{ object.email }}">
+            {{ object.email }}
+        </a><br>
+        {{ object.stud_email }}
+    </p>
+    <h2> Kontodaten </h2>
+    <p>
+        {{ object.account_holder }}<br>
+        {{ object.iban }}<br>
+        {{ object.bic }}<br>
+    </p>
+    {{ object.application_date_bafoeg }}
+
+    <h2> Dokumente </h2>
+
+    <a href="/media/{{ object.enrollment_certificate }}" target="_blank">Immatrikulationsbescheinigung</a><br>
+    <a href="/media/{{ object.bank_statement }}" target="_blank">Kontoauszüge</a><br>
+    <a href="/media/{{ object.identity_document }}" target="_blank">Identitätsdokument</a><br>
+
+
+{% endblock %}

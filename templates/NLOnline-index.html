@@ -1,0 +1,294 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'index.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <form class="nl-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="error">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        <div class="nl-form-group">
+            <p>Hier kannst du einen Antrag auf Notlagenzuschuss bei der Verfassten Studierendenschaft der
+                Universität
+                Heidelberg stellen. Ausserdem kannst du uns anonym Feedback geben, wie wir unsere Arbeit verbessern
+                können.</p>
+            <p>Solltest du fragen zu dem Verfahren haben oder andere Unklarheiten bestehen, kannst du dich gerne per
+                Mail
+                an uns wenden: <a href="mailto:notlagenausschuss@stura.uni-heidelberg.de">notlagenausschuss@stura.uni-heidelberg.de</a>
+            </p>
+            <div style="display: flex; justify-content: end">
+                <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
+            </div>
+        </div>
+
+        <div class="nl-form-group d-none">
+            <h2>Persönliche Daten</h2>
+
+            <div class="d-flex gap-3">
+                <div style="flex-grow: 1">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    {% for error in form.first_name.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div style="flex-grow: 1">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    {% for error in form.last_name.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                {{ form.street.label_tag }}
+                {{ form.street }}
+                {% for error in form.street.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="d-flex gap-3">
+                <div style="flex-grow: .25; max-width: 5rem">
+                    {{ form.zip_code.label_tag }}
+                    {{ form.zip_code }}
+                    {% for error in form.zip_code.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div style="flex-grow: 1">
+                    {{ form.city.label_tag }}
+                    {{ form.city }}
+                    {% for error in form.city.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                {{ form.email.label_tag }}
+                <span style="color: grey">{{ form.email.help_text }}</span>
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.stud_email.label_tag }}
+
+                <div class="input-group">
+                    {{ form.stud_email }}
+                    <span class="input-group-text">@stud.uni-heidelberg.de</span>
+                </div>
+                {% for error in form.stud_email.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+                {% for error in form.phone.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.field_of_study.label_tag }}
+                {{ form.field_of_study }}
+                {% for error in form.field_of_study.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.application_date_bafoeg.label_tag }}
+                {{ form.application_date_bafoeg }}
+                {% for error in form.application_date_bafoeg.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div style="display: flex; justify-content: space-between">
+                <button class="btn btn-primary mt-3 nl-prev-btn" type="button">Previous</button>
+                <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
+            </div>
+        </div>
+
+
+        <div class="nl-form-group d-none">
+            <h3>Account information</h3>
+
+            <div>
+                {{ form.account_holder.label_tag }}
+                {{ form.account_holder }}
+                {% for error in form.account_holder.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.iban.label_tag }}
+                {{ form.iban }}
+                {% for error in form.iban.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.bic.label_tag }}
+                {{ form.bic }}
+                {% for error in form.bic.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div style="display: flex; justify-content: space-between">
+                <button class="btn btn-primary mt-3 nl-prev-btn" type="button">Previous</button>
+                <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
+            </div>
+        </div>
+
+        <div class="nl-form-group d-none">
+            <h2 class="mt-2 mb-3">
+                Tatsächliche und erwartete Einnahmen
+            </h2>
+
+            <div class="callout callout-danger">
+                Es müssen alle Einnahmen angegeben werden.
+                Ansonsten kann der Zuschuss wieder zurückgefordert werden.
+            </div>
+
+            <div class="callout">
+                Einnahmen für die Zukunft sollen nach besten Wissen und Gewissen geschätzt werden. Insbesondere,
+                wenn
+                diese sich ändern ist es gut in der Fallschilderung auf diese einzugehen.
+            </div>
+
+            <div class="nl-einnahmen">
+                <div style="width: 18rem; flex-shrink: 0">
+                    <h3>Einnahmen letzter Monat</h3>
+
+                    <label for="input-eltern">
+                        Nebenjob
+                    </label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Studienkredit</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Zuschüsse (BAföG, Stipendien, etc.)</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
+                            Add different source of income
+                        </button>
+                    </div>
+                </div>
+
+
+                <div style="width: 18rem; flex-shrink: 0">
+                    <h3>Einnahmen dieser Monat</h3>
+
+                    <label for="input-eltern">Nebenjob</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Studienkredit</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Zuschuss</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
+                            Add different source of income
+                        </button>
+                    </div>
+                </div>
+
+
+                <div style="width: 18rem; flex-shrink: 0">
+                    <h3>Einnahmen nächster Monat</h3>
+
+                    <label for="input-eltern">Nebenjob</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Studienkredit</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <label for="input-eltern">Zuschuss</label>
+                    <input id="input-eltern" class="form-control" type="number">
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
+                            Add different source of income
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between">
+                <button class="btn btn-primary mt-3 nl-prev-btn" type="button">Previous</button>
+                <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
+            </div>
+        </div>
+        <div class="nl-form-group d-none">
+            <h3>Attachments</h3>
+
+            <h4>Versicherung über richtigkeit der Angaben</h4>
+            <div>
+                {{ form.signed_form.label_tag }}
+                {{ form.signed_form }}
+                {% for error in form.signed_form.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                {{ form.health_insurance_certificate.label_tag }}
+                {{ form.health_insurance_certificate }}
+                {% for error in form.health_insurance_certificate.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.enrollment_certificate.label_tag }}
+                {{ form.enrollment_certificate }}
+                {% for error in form.enrollment_certificate.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.identity_document.label_tag }}
+                {{ form.identity_document }}
+                {% for error in form.identity_document.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.bank_statements.label_tag }}
+                {{ form.bank_statements }}
+                {% for error in form.bank_statements.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div style="display: flex; justify-content: space-between">
+                <button class="btn btn-primary mt-3 nl-prev-btn" type="button">Previous</button>
+                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
