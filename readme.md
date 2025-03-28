@@ -21,6 +21,9 @@ python manage.py runserver
 
 ## TODOs
 
+- [ ] Eigene Datenbank-tabelle für Antragsteller in `models.py` anlegen
+- [ ] Den Antragsteller, beim Antragsformular anlegen
+
 - [ ] Sonstiges in Ein- und Ausgaben ausführen
 - [ ] Aktiv Monate angeben bei den ein-und ausgaben
 - 
