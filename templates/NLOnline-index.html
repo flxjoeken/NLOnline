@@ -128,7 +128,7 @@
 
 
             <div class="nl-form-group d-none">
-                <h3>Account information</h3>
+                <h2 class="mb-3">Account information</h2>
 
                 <div style="max-width: 40rem">
                     <div>
@@ -163,95 +163,57 @@
             </div>
 
             <div class="nl-form-group d-none">
-                <h2 class="mt-2 mb-3">
-                    Tatsächliche und erwartete Einnahmen
-                </h2>
+                <h2 class="mt-2 mb-3"> Tatsächliche und erwartete Einnahmen </h2>
 
-                <div class="callout callout-danger">
-                    Es müssen alle Einnahmen angegeben werden.
-                    Ansonsten kann der Zuschuss wieder zurückgefordert werden.
-                </div>
+                <p>
+                    Hier gibst du deine tatsächlichen und erwarteten Einnahmen an. Du solltest darauf achten, dass die
+                    Angaben in der Vergangenheit mit deinen tatsächlichen Angagen übereinstimmen.
+                </p>
 
-                <div class="callout">
-                    Einnahmen für die Zukunft sollen nach besten Wissen und Gewissen geschätzt werden. Insbesondere,
-                    wenn
-                    diese sich ändern ist es gut in der Fallschilderung auf diese einzugehen.
-                </div>
-
-                <div class="nl-einnahmen">
-                    <div class="nl-einnahmen-item">
-                        <h3>Einnahmen letzter Monat</h3>
-
-                        <label for="input-eltern">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>letzter Monat</th>
+                        <th>dieser Monat</th>
+                        <th>nächster Monat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            Eltern
+                        </td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Zuschüsse
+                        </td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>
                             Nebenjob
-                        </label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <label for="input-eltern">Studienkredit</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <label for="input-eltern">Zuschüsse (BAföG, Stipendien, etc.)</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
-                                Add different source of income
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="nl-einnahmen-item">
-                        <h3>Einnahmen dieser Monat</h3>
-
-                        <label for="input-eltern">Nebenjob</label>
-                        <div class="input-group">
-                            <input id="input-eltern" class="form-control" type="number">
-                            <span class="input-group-text">€</span>
-                        </div>
-
-                        <label for="input-eltern">Studienkredit</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <label for="input-eltern">Zuschuss</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
-                                Add different source of income
-                            </button>
-                        </div>
-
-                        <div class="d-flex justify-content-between"><label for="dummy-input-desc">Art des
-                            Einkommens</label>
-                            <label for="dummy-input-amount">Betrag</label></div>
-                        <div class="input-group">
-                            <input id="dummy-input-desc" class="form-control" type="text">
-                            <input id="dummy-input-amount" class="form-control" type="number">
-                        </div>
-                    </div>
-
-
-                    <div class="nl-einnahmen-item">
-                        <h3>Einnahmen nächster Monat</h3>
-
-                        <label for="input-eltern">Nebenjob</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <label for="input-eltern">Studienkredit</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <label for="input-eltern">Zuschuss</label>
-                        <input id="input-eltern" class="form-control" type="number">
-
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-link mt-2" style="text-decoration: unset" type="button">
-                                Add different source of income
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                        </td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Studienkredite
+                        </td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                        <td><input class="form-control-sm form-control"></td>
+                    </tr>
+                    </tbody>
+                </table>
                 <div class="nl-prev-next-btn-group" style="display: flex; justify-content: space-between">
                     <button class="btn btn-primary mt-3 nl-prev-btn" type="button">Previous</button>
                     <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
