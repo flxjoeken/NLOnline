@@ -26,17 +26,27 @@
     </title>
 </head>
 <body>
-<div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-2" style="margin-top: 5rem">
-        <h1> {% block heading %} {% endblock %} </h1>
-        {% if user.is_authenticated %}
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button class="btn btn-link" type="submit">logout</button>
-            </form>
-        {% endif %}
+<div style="min-height: 95vh">
+    <div class="header">
+        <div class="container d-flex align-items-center" style="height: 7rem">
+            <img src="{% static 'Sozialreferat-Logo.png' %}" alt="StuRa Heidelberg Sozialreferat" class="logo">
+        </div>
     </div>
-    {% block content %} {% endblock %}
+    <hr style="margin: 0">
+    <div class="container">
+        <div class="mt-4"></div>
+        {% block content %} {% endblock %}
+    </div>
 </div>
+<footer style="height: 7rem; min-height: 5vh; background: #C0C0C0">
+    <div class="container">
+        <div class="d-flex justify-content-center pt-4 gap-4" style="max-width: 60rem">
+            <div>Imprint</div>
+            <div>Terms of Service</div>
+            <div>About</div>
+            <div>Contact</div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

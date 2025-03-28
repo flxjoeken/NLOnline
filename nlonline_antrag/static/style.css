@@ -1,11 +1,20 @@
-body {
-    margin-bottom: 2rem;
+.header {
+    width: 100vw;
+    height: 7rem;
 }
 
 .nl-einnahmen {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
+}
+
+.nl-einnahmen-item {
+    flex: 1 0 18rem;
+}
+
+.nl-prev-next-btn-group {
+    margin-bottom: 2rem;
 }
 
 h3 {
