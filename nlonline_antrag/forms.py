@@ -6,9 +6,6 @@ class NLForm(forms.ModelForm):
     class Meta:
         model = NLOnlineAntrag
         fields = '__all__'
-        help_texts = {
-            'email': 'For communication. May be the same as you\'re student email',
-        }
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -16,7 +13,6 @@ class NLForm(forms.ModelForm):
             'zip_code': forms.TextInput(attrs={'class': 'form-control', 'pattern': '[0-9]{5}'}),
             'city': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'stud_email': forms.EmailInput(attrs={'class': 'form-control'}),
             'phone': forms.TextInput(attrs={'class': 'form-control', 'type': 'tel'}),
             'field_of_study': forms.TextInput(attrs={'class': 'form-control'}),
             'application_date_bafoeg': forms.DateInput(attrs={'class': 'form-control'}),

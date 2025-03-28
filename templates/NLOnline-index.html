@@ -96,17 +96,6 @@
                         {% endfor %}
                     </div>
                     <div>
-                        {{ form.stud_email.label_tag }}
-
-                        <div class="input-group">
-                            {{ form.stud_email }}
-                            <span class="input-group-text">@stud.uni-heidelberg.de</span>
-                        </div>
-                        {% for error in form.stud_email.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-                    <div>
                         {{ form.phone.label_tag }}
                         {{ form.phone }}
                         {% for error in form.phone.errors %}

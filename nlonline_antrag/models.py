@@ -13,7 +13,6 @@ class NLOnlineAntrag(models.Model):
     city = models.CharField(max_length=100)
 
     email = models.EmailField(max_length=100)
-    stud_email = models.EmailField(max_length=100)
 
     phone = models.CharField(max_length=100)
 
