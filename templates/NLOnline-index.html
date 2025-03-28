@@ -36,87 +36,88 @@
                     Mail
                     an uns wenden: <a href="mailto:notlagenausschuss@stura.uni-heidelberg.de">notlagenausschuss@stura.uni-heidelberg.de</a>
                 </p>
-                <div style="display: flex; justify-content: end">
+                <div class="nl-prev-next-btn-group" style="display: flex; justify-content: end">
                     <button class="btn btn-primary mt-3 nl-next-btn" type="button">Next</button>
                 </div>
             </div>
 
             <div class="nl-form-group d-none">
+                <h2 class="mb-3">Persönliche Daten</h2>
                 <div style="max-width: 40rem">
-                    <h2>Persönliche Daten</h2>
+                    <div class="d-flex flex-column gap-">
+                        <div class="d-flex gap-3">
+                            <div style="flex-grow: 1">
+                                {{ form.first_name.label_tag }}
+                                {{ form.first_name }}
+                                {% for error in form.first_name.errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <div style="flex-grow: 1">
+                                {{ form.last_name.label_tag }}
+                                {{ form.last_name }}
+                                {% for error in form.last_name.errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
 
-                    <div class="d-flex gap-3">
-                        <div style="flex-grow: 1">
-                            {{ form.first_name.label_tag }}
-                            {{ form.first_name }}
-                            {% for error in form.first_name.errors %}
+                        <div>
+                            {{ form.street.label_tag }}
+                            {{ form.street }}
+                            {% for error in form.street.errors %}
                                 <p class="error">{{ error }}</p>
                             {% endfor %}
                         </div>
-                        <div style="flex-grow: 1">
-                            {{ form.last_name.label_tag }}
-                            {{ form.last_name }}
-                            {% for error in form.last_name.errors %}
+
+                        <div class="d-flex" style="gap: 0.2rem">
+                            <div style="flex-grow: .25; max-width: 5rem">
+                                {{ form.zip_code.label_tag }}
+                                {{ form.zip_code }}
+                                {% for error in form.zip_code.errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            <div style="flex-grow: 1">
+                                {{ form.city.label_tag }}
+                                {{ form.city }}
+                                {% for error in form.city.errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div>
+                            {{ form.email.label_tag }}
+                            <span style="color: grey">{{ form.email.help_text }}</span>
+                            {{ form.email }}
+                            {% for error in form.email.errors %}
                                 <p class="error">{{ error }}</p>
                             {% endfor %}
                         </div>
-                    </div>
-
-                    <div>
-                        {{ form.street.label_tag }}
-                        {{ form.street }}
-                        {% for error in form.street.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-
-                    <div class="d-flex gap-3">
-                        <div style="flex-grow: .25; max-width: 5rem">
-                            {{ form.zip_code.label_tag }}
-                            {{ form.zip_code }}
-                            {% for error in form.zip_code.errors %}
+                        <div>
+                            {{ form.phone.label_tag }}
+                            {{ form.phone }}
+                            {% for error in form.phone.errors %}
                                 <p class="error">{{ error }}</p>
                             {% endfor %}
                         </div>
-                        <div style="flex-grow: 1">
-                            {{ form.city.label_tag }}
-                            {{ form.city }}
-                            {% for error in form.city.errors %}
+
+                        <div>
+                            {{ form.field_of_study.label_tag }}
+                            {{ form.field_of_study }}
+                            {% for error in form.field_of_study.errors %}
                                 <p class="error">{{ error }}</p>
                             {% endfor %}
                         </div>
-                    </div>
 
-                    <div class="form-group mt-3">
-                        {{ form.email.label_tag }}
-                        <span style="color: grey">{{ form.email.help_text }}</span>
-                        {{ form.email }}
-                        {% for error in form.email.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        {{ form.phone.label_tag }}
-                        {{ form.phone }}
-                        {% for error in form.phone.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-
-                    <div>
-                        {{ form.field_of_study.label_tag }}
-                        {{ form.field_of_study }}
-                        {% for error in form.field_of_study.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-
-                    <div>
-                        {{ form.application_date_bafoeg.label_tag }}
-                        {{ form.application_date_bafoeg }}
-                        {% for error in form.application_date_bafoeg.errors %}
-                            <p class="error">{{ error }}</p>
-                        {% endfor %}
+                        <div>
+                            {{ form.application_date_bafoeg.label_tag }}
+                            {{ form.application_date_bafoeg }}
+                            {% for error in form.application_date_bafoeg.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="nl-prev-next-btn-group" style="display: flex; justify-content: space-between">
@@ -129,28 +130,30 @@
             <div class="nl-form-group d-none">
                 <h3>Account information</h3>
 
-                <div>
-                    {{ form.account_holder.label_tag }}
-                    {{ form.account_holder }}
-                    {% for error in form.account_holder.errors %}
-                        <p class="error">{{ error }}</p>
-                    {% endfor %}
-                </div>
+                <div style="max-width: 40rem">
+                    <div>
+                        {{ form.account_holder.label_tag }}
+                        {{ form.account_holder }}
+                        {% for error in form.account_holder.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
 
-                <div>
-                    {{ form.iban.label_tag }}
-                    {{ form.iban }}
-                    {% for error in form.iban.errors %}
-                        <p class="error">{{ error }}</p>
-                    {% endfor %}
-                </div>
+                    <div>
+                        {{ form.iban.label_tag }}
+                        {{ form.iban }}
+                        {% for error in form.iban.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
 
-                <div>
-                    {{ form.bic.label_tag }}
-                    {{ form.bic }}
-                    {% for error in form.bic.errors %}
-                        <p class="error">{{ error }}</p>
-                    {% endfor %}
+                    <div>
+                        {{ form.bic.label_tag }}
+                        {{ form.bic }}
+                        {% for error in form.bic.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
                 </div>
 
                 <div class="nl-prev-next-btn-group" style="display: flex; justify-content: space-between">
