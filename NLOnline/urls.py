@@ -28,5 +28,5 @@ urlpatterns = [
     re_path('media/(?P<path>.*)', views.mediaView, name='media'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('register/', register)
+    path('register/', register, name='register')
 ]

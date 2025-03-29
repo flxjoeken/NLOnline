@@ -9,12 +9,25 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Antrag auf Notlagenzuschuss</h1>
-    <p> Herzlich willkommen auf dem Antragsportal des Sozialreferats der Studierendenvertretung der Universität
-        Heidelberg. Hier kannst du einen Antrag auf Notlagenzuschuss stellen. Dazu benötigst du ein Konto, dieses kannst
-        du hier anlegen:
-    </p>
 
+    {% if user.is_authenticated %}
+        {% if user.is_staff %}
+            Du bekommst sicher irgendwann ein hübsches Portal. <br>
+            Anzahl neuer Anträge seit letztem Login:
+        {% else %}
+            <div class="display-mid">
+                <h1>Einen neuen Antrag stellen</h1>
+                <button class="btn btn-primary btn-lg"> -></button>
+            </div>
+        {% endif %}
+    {% else %}
+        <h1>Antrag auf Notlagenzuschuss</h1>
+
+        <p> Herzlich willkommen auf dem Antragsportal des Sozialreferats der Studierendenvertretung der Universität
+            Heidelberg. Hier kannst du einen Antrag auf Notlagenzuschuss stellen. Dazu benötigst du ein Konto:
+            <a href="{% url 'register' %}">Registrieren</a>.
+        </p>
+    {% endif %}
 
 
 {% endblock %}
