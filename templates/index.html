@@ -15,9 +15,9 @@
             Du bekommst sicher irgendwann ein hübsches Portal. <br>
             Anzahl neuer Anträge seit letztem Login:
         {% else %}
-            <div class="display-mid">
+            <div class="nl-display-mid">
                 <h1>Einen neuen Antrag stellen</h1>
-                <button class="btn btn-primary btn-lg"> -></button>
+                <a href="{% url 'new_application' %}" class="btn btn-primary btn-lg"> -></a>
             </div>
         {% endif %}
     {% else %}

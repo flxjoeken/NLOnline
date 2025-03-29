@@ -19,12 +19,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, re_path
 
 from nlonline_antrag import views
-from nlonline_antrag.views import register
+from nlonline_antrag.views import register, new_application
 
 urlpatterns = [
     path('', views.index),
-    path('antrag/<int:pk>/', views.AntragDetailView.as_view(), name='antrag-detail'),
-    path('antrag/', views.AntragListView.as_view(), name='antrag-list'),
+    path('new_application/', new_application, name='new_application'),
+    path('application/<int:pk>/', views.AntragDetailView.as_view(), name='application-detail'),
+    path('application/', views.AntragListView.as_view(), name='application-list'),
     re_path('media/(?P<path>.*)', views.mediaView, name='media'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
