@@ -28,8 +28,32 @@
 <body>
 <div style="min-height: 95vh">
     <div class="header">
-        <div class="container d-flex align-items-center" style="height: 7rem">
-            <img src="{% static 'Sozialreferat-Logo.png' %}" alt="StuRa Heidelberg Sozialreferat" class="logo">
+        <div class="container d-flex justify-content-between align-items-center" style="height: 7rem">
+            <a href="/">
+                <img src="{% static 'Sozialreferat-Logo.png' %}" alt="StuRa Heidelberg Sozialreferat" class="logo">
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-secondary" data-bs-toggle="dropdown">
+                    {% if user.is_authenticated %}
+                        {{ user.username }}
+                    {% else %}
+                        Login
+                    {% endif %}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    {% if user.is_authenticated %}
+                        <li>
+                            <form method="post" action="/logout/">
+                                {% csrf_token %}
+                                <button class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a class="dropdown-item" href="/login/">Login</a></li>
+                        <li><a class="dropdown-item" href="/register/">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </div>
     <hr style="margin: 0">

@@ -1,29 +1,44 @@
 import os.path
 
 from django.conf import settings
-from django.utils import timezone
-
 from django.http import HttpResponse, Http404, FileResponse
 from django.shortcuts import render
+from django.utils import timezone
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.generic import DetailView, ListView
 
-from nlonline_antrag.forms import NLForm
+from nlonline_antrag.forms import RegisterForm
 from nlonline_antrag.models import NLOnlineAntrag
 
 
 def index(request):
-    if (request.method == 'POST'):
-        form = NLForm(request.POST, request.FILES)
+    return render(request, 'NLOnline-index.html')
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save(commit=True)
-            return HttpResponse("Danke für Ihre Anfrage. Wir werden uns in Kürze bei Ihnen melden.")
+            form.save()
+            return HttpResponse('ok')
         else:
-            print(form.errors)
-            return render(request, 'NLOnline-index.html', {"form": form})
-    else:
-        form = NLForm()
-        return render(request, 'NLOnline-index.html', {"form": form})
+            return render(request, 'nlonline_antrag/register.html', {'form': form})
+    form = RegisterForm()
+    return render(request, 'nlonline_antrag/register.html', {'form': form})
+
+
+# def index(request):
+#     if (request.method == 'POST'):
+#         form = NLForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save(commit=True)
+#             return HttpResponse("Danke für Ihre Anfrage. Wir werden uns in Kürze bei Ihnen melden.")
+#         else:
+#             print(form.errors)
+#             return render(request, 'NLOnline-index.html', {"form": form})
+#     else:
+#         form = NLForm()
+#         return render(request, 'NLOnline-index.html', {"form": form})
 
 
 class AntragDetailView(DetailView):
